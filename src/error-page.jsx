@@ -1,7 +1,7 @@
 import { useRouteError } from "react-router-dom";
 
 // Import Components
-import Navbar from "./components/navbar";
+import Navbar from "./components/nav/navbar";
 
 export default function ErrorPage() {
     const error = useRouteError();

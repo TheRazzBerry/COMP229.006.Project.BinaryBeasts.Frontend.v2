@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Import APIs
-import listActiveTournaments from "../datasource/api-tournaments";
+import listActiveTournaments from "../../datasource/api-tournaments";
 
 export default function ActiveTournaments() {
     const [activeTournamentList, setActiveTournamentList] = useState([]);
