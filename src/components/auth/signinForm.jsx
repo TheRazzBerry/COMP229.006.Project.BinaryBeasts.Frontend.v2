@@ -1,6 +1,5 @@
 // Import Dependencies
 import { useState } from 'react';
-import { Link, useNavigation, useLocation, useNavigate } from 'react-router-dom';
 
 // Import APIs
 import { signin } from '../../datasource/api-users';
@@ -9,11 +8,6 @@ import { signin } from '../../datasource/api-users';
 import { authenticate } from '../auth/authHelper';
 
 export default function SigninForm() {
-    const { state } = useLocation();
-    const { from } = state || { from: { pathname: '/' } }
-
-    let navigate = useNavigate();
-
     const [errorMessage, setErrorMessage] = useState('');
     const [user, setUser] = useState({
         email: '',
@@ -29,9 +23,8 @@ export default function SigninForm() {
         event.preventDefault();
         signin(user).then((data) => {
             if (!data) return setErrorMessage("ERROR MESSAGE");
-            authenticate(data.token, () => {
-                navigate(from, { replace: true });
-            });
+            authenticate(data.token);
+            window.location.reload(false);
         }).catch(error => {
             setErrorMessage(error.message);
             console.log(error);
