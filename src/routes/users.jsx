@@ -1,10 +1,10 @@
 // Import Components
 import Navbar from "../components/nav/navbar";
-import ListUsers from "../components/users/ListUsers";
+import ListMyTournaments from "../components/tournaments/ListMyTournaments";
 
 export default function Tournaments() {
     return (<>
         <Navbar />
-        <ListUsers />
+        <ListMyTournaments />
     </>);
 }

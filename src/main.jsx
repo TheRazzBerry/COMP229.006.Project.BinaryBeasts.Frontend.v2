@@ -12,6 +12,9 @@ import ErrorPage from './error-page.jsx';
 import Root from './routes/root.jsx';
 import Users from './routes/users.jsx';
 
+// Import Components
+import PrivateRoute from './components/auth/privateRoute.jsx';
+
 // Define Router
 const router = createBrowserRouter([
     {
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'users',
-        element: <Users />,
+        element: <PrivateRoute>< Users /></PrivateRoute>,
         errorElement: <ErrorPage />
     }
 ]);

@@ -10,7 +10,7 @@ export default function NavButton() {
             </button>
             <div className="collapse navbar-collapse" id="navMenu">
                 <div className="navbar-nav">
-                    <a className="nav-link" href="users">Users</a>
+                    <a className="nav-link" href="users">My Tournaments</a>
                 </div>
             </div>
         </>);
