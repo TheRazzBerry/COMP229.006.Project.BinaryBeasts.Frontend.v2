@@ -16,13 +16,13 @@ export default function SigninForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setUser((prevFromData) => ({ ...prevFromData, [name]: value }))
+        setUser((prevUserData) => ({ ...prevUserData, [name]: value }))
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         signin(user).then((data) => {
-            if (!data) return setErrorMessage("ERROR MESSAGE");
+            if (!data) return setErrorMessage("ERROR! Invalid Sign In Data!");
             authenticate(data.token);
             window.location.reload(false);
         }).catch(error => {
@@ -38,6 +38,7 @@ export default function SigninForm() {
                 <label htmlFor="loginEmail" className="form-label">Email Address</label>
                 <input
                     type="email"
+                    autoComplete="email"
                     className="form-control"
                     placeholder="name@email.com"
                     id="loginEmail"
@@ -53,7 +54,7 @@ export default function SigninForm() {
                     type="password"
                     className="form-control"
                     id="loginPassword"
-                    placeholder=""
+                    placeholder="********"
                     name="password"
                     value={user.password || ''}
                     onChange={handleChange}

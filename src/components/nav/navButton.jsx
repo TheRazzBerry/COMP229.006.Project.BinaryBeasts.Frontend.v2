@@ -4,12 +4,10 @@ import { isAuthenticated, clearJWT } from "../auth/authHelper";
 
 export default function NavButton() {
     function NavToggler(props) {
-
         function signOut() {
             clearJWT();
             window.location.reload(false);
         }
-
         return (<>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle Navigation">
                 <span className="navbar-toggler-icon"></span>
