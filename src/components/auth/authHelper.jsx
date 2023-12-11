@@ -6,7 +6,8 @@ const authenticate = (token) => {
         sessionStorage.setItem('token', token);
 
         let decoded = jwtDecode(token);
-        sessionStorage.setItem('id', decoded.id)
+        sessionStorage.setItem('id', decoded.id);
+        sessionStorage.setItem('username', decoded.name);
     }
 }
 
@@ -25,6 +26,11 @@ const getId = () => {
     return sessionStorage.getItem('id');
 }
 
+const getUsername = () => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem('username')
+}
+
 const clearJWT = () => {
     if (typeof window !== "undefined") {
         sessionStorage.removeItem('token');
@@ -32,4 +38,4 @@ const clearJWT = () => {
     }
 }
 
-export { authenticate, isAuthenticated, getToken, getId, clearJWT }
+export { authenticate, isAuthenticated, getToken, getId, getUsername, clearJWT }
