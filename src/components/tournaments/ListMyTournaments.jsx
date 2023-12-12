@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 // Import Components
 import EditTournament from "./editTournament";
+import AddTeam from "./AddPlayer";
 
 // Import APIs
 import { getMyTournaments } from "../../datasource/api-users";
@@ -61,6 +62,7 @@ export default function ListMyTournaments() {
                         <br />
                         <button className="btn btn-danger mt-2" onClick={() => handleDelete(tournament.id)}>Delete</button>
                         <EditTournament />
+                        <AddTeam />
                     </div>
                 );
             })}
