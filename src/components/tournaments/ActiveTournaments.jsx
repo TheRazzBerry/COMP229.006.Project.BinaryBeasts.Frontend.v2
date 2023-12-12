@@ -8,16 +8,13 @@ export default function ActiveTournaments() {
     const [activeTournamentList, setActiveTournamentList] = useState([]);
 
     useEffect(() => {
-        try {
-            listActiveTournaments().then((activeTournamentList) => {
-                if (!activeTournamentList) throw error;
-                setActiveTournamentList(activeTournamentList);
-            }).catch(error => { console.log(error); });
-        }
-        catch (error) { console.log(error); }
+        listActiveTournaments().then((data) => {
+            if (!data) throw error;
+            setActiveTournamentList(data);
+        }).catch(error => { console.log(error); });
     }, []);
 
-    return (
+    return (<>
         <div className="container">
             {activeTournamentList.map((tournament, index) => {
                 return (
@@ -28,5 +25,5 @@ export default function ActiveTournaments() {
                 );
             })}
         </div>
-    );
+    </>);
 }
