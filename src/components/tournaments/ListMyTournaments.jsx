@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // Import Components
-import EditTournament from "./editTournament";
+import EditTournament from "./EditTournament";
 import AddTeam from "./AddPlayer";
 
 // Import APIs
