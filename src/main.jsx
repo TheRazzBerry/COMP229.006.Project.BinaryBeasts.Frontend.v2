@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'users',
-        element: <PrivateRoute>< Users /></PrivateRoute>,
+        element: < Users />,
         errorElement: <ErrorPage />
     }
 ]);
