@@ -1,20 +1,12 @@
 // Import Dependencies
 import { useState } from "react";
 
-// Import APIs
-import { getTournamentById, editTournamentById } from "../../datasource/api-tournaments";
-
 export default function EditTournament(id) {
     const [errorMessage, setErrorMessage] = useState('');
     const [tournament, setTournament] = useState({
         name: '',
         description: ''
     });
-
-    const getTournament = async (id) => {
-
-    }
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setTournament((prevTournamentData) => ({ ...prevTournamentData, [name]: value }));

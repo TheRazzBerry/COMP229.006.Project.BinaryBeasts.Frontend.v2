@@ -30,10 +30,6 @@ export default function ListMyTournaments() {
         }).catch(error => { console.log(error); })
     }
 
-    const handleEdit = (id) => {
-
-    }
-
     return (<>
         <div className="container">
             {myTournamentsList.map((tournament, tournamentIndex) => {
