@@ -1,6 +1,7 @@
 // Import Components
 import Navbar from "../components/nav/navbar";
 import ListMyTournaments from "../components/tournaments/ListMyTournaments";
+import CreateTournament from "../components/tournaments/CreateTournament";
 
 // Import APIs
 import { getUsername } from "../components/auth/authHelper";
@@ -12,6 +13,7 @@ export default function Tournaments() {
             <div className="mt-3 p-3 text-center">
                 <h1>Hello {getUsername()}</h1>
                 <p>View your tournaments below</p>
+                <CreateTournament />
             </div>
         </div>
         <ListMyTournaments />
