@@ -1,6 +1,9 @@
 // Import Dependencies
 import { useEffect, useState } from "react";
 
+// Import Components
+import EditTournament from "./editTournament";
+
 // Import APIs
 import { getMyTournaments } from "../../datasource/api-users";
 import { deleteTournament } from "../../datasource/api-tournaments";
@@ -18,12 +21,16 @@ export default function ListMyTournaments() {
         }).catch(error => { console.log(error); });
     }, []);
 
-    const handelDelete = (id) => {
+    const handleDelete = (id) => {
         if (!isAuthenticated()) return window.alert('You are not authenticated!')
         deleteTournament(id).then((data) => {
             console.log(data);
             window.location.reload(false);
         }).catch(error => { console.log(error); })
+    }
+
+    const handleEdit = (id) => {
+
     }
 
     return (<>
@@ -51,7 +58,9 @@ export default function ListMyTournaments() {
                                 </>);
                             }
                         })}
-                        <button className="btn btn-dark w-100 mt-2" onClick={() => handelDelete(tournament.id)}>Delete</button>
+                        <br />
+                        <button className="btn btn-danger mt-2" onClick={() => handleDelete(tournament.id)}>Delete</button>
+                        <EditTournament />
                     </div>
                 );
             })}

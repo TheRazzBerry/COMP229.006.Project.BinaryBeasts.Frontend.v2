@@ -17,6 +17,35 @@ const listActiveTournaments = async () => {
     } catch (error) { console.log(error); }
 }
 
+const getTournamentById = async (id) => {
+    try {
+        let response = await fetch(apiURL + 'tournaments/view/' + id, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getToken()
+            }
+        });
+        return await response.json();
+    } catch (error) { console.log(error); }
+}
+
+const editTournamentById = async (tournament, id) => {
+    try {
+        let response = await fetch(apiURL + 'tournaments/edit/' + id, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getToken()
+            },
+            body: JSON.stringify(tournament)
+        });
+        return await response.json();
+    } catch (error) { console.log(error); }
+}
+
 const createTournament = async (tournament) => {
     try {
         let response = await fetch(apiURL + 'tournaments/create', {
@@ -46,4 +75,4 @@ const deleteTournament = async (id) => {
     } catch (error) { console.log(error); }
 }
 
-export { listActiveTournaments, createTournament, deleteTournament };
+export { listActiveTournaments, createTournament, deleteTournament, getTournamentById, editTournamentById };

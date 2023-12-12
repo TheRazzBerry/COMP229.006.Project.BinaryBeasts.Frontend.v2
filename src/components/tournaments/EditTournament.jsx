@@ -2,17 +2,18 @@
 import { useState } from "react";
 
 // Import APIs
-import { createTournament } from "../../datasource/api-tournaments";
+import { getTournamentById, editTournamentById } from "../../datasource/api-tournaments";
 
-// Import Auth
-import { getId } from "../auth/authHelper";
-
-export default function CreateTournament() {
+export default function EditTournament(id) {
     const [errorMessage, setErrorMessage] = useState('');
     const [tournament, setTournament] = useState({
         name: '',
         description: ''
     });
+
+    const getTournament = async (id) => {
+
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -21,28 +22,17 @@ export default function CreateTournament() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let newTournament = {
-            name: tournament.name,
-            description: tournament.description,
-            owner: getId()
-        }
-        createTournament(newTournament).then((data) => {
-            if (!data) return setErrorMessage("ERROR! Invalid Tournament Object!");
-            window.location.reload(false);
-        }).catch(error => {
-            setErrorMessage(error.message);
-            console.log(error);
-        });
+        console.log(event);
     }
 
     return (<>
-        <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#createTournamentForm">Create Tournament</button>
-        <div className="modal fade text-light" id="createTournamentForm" tabIndex="-1" aria-labelledby="createTournamentFormLabel" aria-hidden="true" data-bs-theme="dark">
+        <button className="btn btn-dark mt-2 ms-2" data-bs-toggle="modal" data-bs-target="#editTournamentForm">Edit</button>
+        <div className="modal fade text-light" id="editTournamentForm" tabIndex="-1" aria-labelledby="createTournamentFormLabel" aria-hidden="true" data-bs-theme="dark">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
 
                     <div className="modal-header">
-                        <h1 className="modal-title" id="loginFormTitleLabel">Create Tournament</h1>
+                        <h1 className="modal-title" id="loginFormTitleLabel">Edit Tournament</h1>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
@@ -78,6 +68,7 @@ export default function CreateTournament() {
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
+
                 </div>
             </div>
         </div>
